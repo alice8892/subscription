@@ -1,0 +1,89 @@
+<nav>
+    <div class="scrollable">
+        <h2>Hello admin</h2>
+        <ul>
+            <li>
+                <a href="/admin/plans">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View plans
+                </a>
+            </li>
+            <li>
+                <a href="/admin/orders">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View orders
+                </a>
+            </li>
+            <li>
+                <a href="/admin/subscriptions">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View subscriptions
+                </a>
+            </li>
+            <li>
+                <a href="/orders/order_schedule">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View order schedules
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <section>
+        {{#if query.success}}
+            <p style="color: green">Plan saved successfully!</p>
+        {{/if}}
+        {{#if query.noplan}}
+            <p style="color: red">Plan does not exist!</p>
+        {{/if}}
+        <h1>Plans</h1>
+        <p>
+            <a href="/admin/plans/create">Create new plan</a>
+        </p>
+        {{#if plans.length}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Plan code</th>
+                    <th>Plan title</th>
+                    <th>Frequency</th>
+                    <th>Frequency duration</th>
+                    <th>Active</th>
+                    <th>Plan Description</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each plans}}
+                    <tr>
+                        <td>{{plan_code}}</td>
+                        <td>{{plan_title}}</td>
+                        <td>{{frequency}}</td>
+                        <td>{{frequency_duration}}</td>
+                        <td>
+                            {{#if (eq is_active true)}}
+                                Yes
+                            {{else}}
+                                No
+                            {{/if}}
+                        </td>
+                        <td>{{plan_description}}</td>
+                        <td><a href="/admin/plans/{{this.plan_id}}/edit">Edit plan</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p>No plans found.</p>
+        {{/if}}
+    </section>
+</main>

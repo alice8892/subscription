@@ -1,0 +1,85 @@
+:root {
+    --white: #FFFFFF;
+    --lightest-gray: #FAFAFA;
+    --light-gray: #EDEDED;
+    --dark-gray: #4D4D4D;
+    --black: #333333;
+    --primary: #009CDE;
+
+    --text-color: var(--black);
+    --weak-text-color: var(--dark-gray);
+    --link-color: var(--primary);
+    --icon-color: var(--black);
+    --background-color: var(--white);
+    --hover-color: var(--light-gray);
+
+    --inverted-background-color: var(--dark-gray);
+    --inverted-text-color: var(--white);
+
+    --border-color: var(--light-gray);
+
+    --header-background-color: var(--primary);
+    --header-text-color: var(--white);
+
+    --card-background-color: var(--lightest-gray);
+
+    --header-height: 5rem;
+    --body-padding: 2rem;
+    --footer-height: 16rem;
+    --nav-width: 16rem;
+}
+
+html {
+    accent-color: var(--primary);
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --header-height: 4rem;
+        --body-padding: 1rem;
+    }
+}
+
+form {
+    max-width: 600px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+fieldset {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

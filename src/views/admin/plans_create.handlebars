@@ -1,0 +1,85 @@
+<nav>
+    <div class="scrollable">
+        <h2>Hello admin</h2>
+        <ul>
+            <li>
+                <a href="/admin/plans">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View plans
+                </a>
+            </li>
+            <li>
+                <a href="/admin/orders">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View orders
+                </a>
+            </li>
+            <li>
+                <a href="/admin/subscriptions">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View subscriptions
+                </a>
+            </li>
+            <li>
+                <a href="/orders/order_schedule">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View order schedules
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <section>
+        {{#if query.duplicateplan}}
+            <p style="color: red">Plan with same frequency and frequency duration already exist!</p>
+        {{/if}}
+        <h1>Add plan</h1>
+        <form action="/admin/plans/save" method="POST">
+            <div>
+                <label for="plan_code">Plan code:</label>
+                <input type="text" id="plan_code" name="plan_code" value="" required>
+            </div>
+            <div>
+                <label for="plan_title">Plan title:</label>
+                <input type="text" id="plan_title" name="plan_title" value="" required>
+            </div>
+            <div>
+                <label for="frequency">Frequency:</label>
+                <select name="frequency" id="frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div>
+                <label for="frequency_duration">Frequency duration:</label>
+                <input type="text" id="frequency_duration" name="frequency_duration" value="" required>
+            </div>
+            <div>
+                <label for="is_active">Is active:</label>
+                <select name="is_active" id="is_active">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div>
+                <label for="plan_description">Plan description:</label>
+                <input type="text" id="plan_description" name="plan_description" value="" required>
+            </div>
+            <div>
+                <button type="submit">Save</button>
+                <button type="button" onclick="window.location.href='/admin/plans/'">Cancel</button>
+            </div>
+        </form>
+    </section>
+</main>

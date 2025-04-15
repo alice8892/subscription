@@ -1,0 +1,82 @@
+<nav>
+    <div class="scrollable">
+        <h2>Hello admin</h2>
+        <ul>
+            <li>
+                <a href="/admin/plans">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View plans
+                </a>
+            </li>
+            <li>
+                <a href="/admin/orders">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View orders
+                </a>
+            </li>
+            <li>
+                <a href="/admin/subscriptions">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View subscriptions
+                </a>
+            </li>
+            <li>
+                <a href="/orders/order_schedule">
+                    <svg>
+                        <use xlink:href="/images/icons.svg#table"></use>
+                    </svg>
+                    View order schedules
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <section>
+        {{#if query.success}}
+            <p style="color: green">Order created successfully!</p>
+        {{/if}}
+        <h1>Orders</h1>
+        <form action="/admin/orders/delete" method="POST">
+            <button type="submit">Delete All</button>
+        </form>
+        {{#if orders}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Customer Id</th>
+                    <th>Plan</th>
+                    <th>SKU</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                    <th>Grand Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each orders}}
+                    <tr>
+                        <td>{{order_id}}</td>
+                        <td>{{customer_id}}</td>
+                        <td>{{frequency}}</td>
+                        <td>{{sku}}</td>
+                        <td>{{qty}}</td>
+                        <td>{{order_status}}</td>
+                        <td>{{formatDate created_at}}</td>
+                        <td>£{{total_amount}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p>No orders found.</p>
+        {{/if}}
+    </section>
+</main>
