@@ -1,0 +1,39 @@
+{
+  "name": "capstone-starter",
+  "version": "1.0.0",
+  "main": "build/app.js",
+  "scripts": {
+    "start": "node build/app.js",
+    "collect": "node build/collect.js",
+    "analyze": "node build/analyze.js",
+    "migrate": "knex migrate:latest --knexfile databases/knexfile.js",
+    "build": "tsc && cp -r src/views src/public build/",
+    "build:image": "docker build -t tacos-subscription:0.0.2 -f deployments/Dockerfile .",
+    "clean": "rm -rf ./build",
+    "watch": "nodemon src/app.ts",
+    "start:dev": "npm run build && node build/app.js",
+    "collect:dev": "npm run build && node build/collect.js",
+    "analyze:dev": "npm run build && node build/analyze.js",
+    "test": "tsc --noEmit && vitest run"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.14",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.11.8",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.5.1",
+    "@jest/globals": "^29.7.0",
+    "cron": "^4.1.0",
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
+    "kafkajs": "^1.16.0",
+    "knex": "^3.1.0",
+    "pg": "^8.12.0"
+  }
+}
